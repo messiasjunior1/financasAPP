@@ -3,7 +3,7 @@ package com.utfpr.financeiroapp;
 import java.io.Serializable;
 import java.util.Date;
 
-public class TransacoesEntity implements Serializable
+public class  TransacoesEntity implements Serializable
 {
     private Long id;
     private String nome;
@@ -25,8 +25,6 @@ public class TransacoesEntity implements Serializable
         this.data = data;
         this.tipoTransacoes = tipoTransacoes;
     }
-
-    public TransacoesEntity() {}
 
     public Long getId() { return id; }
 

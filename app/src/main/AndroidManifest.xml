@@ -11,6 +11,7 @@
         android:theme="@style/Theme.FinanceiroAPP">
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".LoginActivity" />
+        <activity android:name=".Saldos"></activity>
         <activity
             android:name=".MainActivity">
             android:label="@string/app_name">

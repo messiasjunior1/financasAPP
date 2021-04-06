@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
-    Button btnLogout;
+    Button btnLogout, btnSaldo;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -19,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         btnLogout = findViewById(R.id.logout);
+        btnSaldo = findViewById(R.id.btnSaldo);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,6 +27,14 @@ public class HomeActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent intToMain = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(intToMain);
+            }
+        });
+
+        btnSaldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intToSaldo = new Intent(HomeActivity.this, Saldos.class);
+                startActivity(intToSaldo);
             }
         });
     }

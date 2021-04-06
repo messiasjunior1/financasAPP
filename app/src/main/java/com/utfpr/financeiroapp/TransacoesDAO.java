@@ -34,9 +34,9 @@ public class TransacoesDAO implements ITransacoesDAO
 
         try {
             writer.insert(TransacoesContract.TransacoesEntry.TABLE_NAME, null, cv);
-            Log.i("DB INFO", "Campus salvo com sucesso");
+            Log.i("DB INFO", "Transação salvo com sucesso");
         }catch (Exception e){
-            Log.e("DB ERROR", "Erro ao salvar Campus" + e.getMessage());
+            Log.e("DB ERROR", "Erro ao salvar transação" + e.getMessage());
             return false;
         }
 
@@ -57,9 +57,9 @@ public class TransacoesDAO implements ITransacoesDAO
         try {
             String[] args = {c.getId().toString()};
             writer.update(TransacoesContract.TransacoesEntry.TABLE_NAME, cv, TransacoesContract.TransacoesEntry._ID+"=?", args);
-            Log.i("DB INFO", "Campus atualizado com sucesso");
+            Log.i("DB INFO", "Transação atualizado com sucesso");
         }catch (Exception e){
-            Log.e("DB ERROR", "Erro ao atualizar Campus" + e.getMessage());
+            Log.e("DB ERROR", "Erro ao atualizar transação" + e.getMessage());
             return false;
         }
         return true;
@@ -71,9 +71,9 @@ public class TransacoesDAO implements ITransacoesDAO
         try {
             String[] args = {c.getId().toString()};
             writer.delete(TransacoesContract.TransacoesEntry.TABLE_NAME, TransacoesContract.TransacoesEntry._ID+"=?", args);
-            Log.i("DB INFO", "Campus deletado com sucesso");
+            Log.i("DB INFO", "Transação deletada com sucesso");
         }catch (Exception e){
-            Log.e("DB ERROR", "Erro ao deletar Campus" + e.getMessage());
+            Log.e("DB ERROR", "Erro ao deletar transação" + e.getMessage());
             return false;
         }
         return true;
@@ -82,7 +82,7 @@ public class TransacoesDAO implements ITransacoesDAO
     @Override
     public List<TransacoesEntity> listar() {
 
-        List<TransacoesEntity> campus = new ArrayList<>();
+        List<TransacoesEntity> saldo = new ArrayList<>();
 
         String sql = "SELECT * FROM " + TransacoesContract.TransacoesEntry.TABLE_NAME + " ;";
         Cursor cursor = reader.rawQuery(sql, null);
@@ -100,10 +100,10 @@ public class TransacoesDAO implements ITransacoesDAO
             TransacoesEntity c = new TransacoesEntity(nome, valor, descricao, local, data, tipoTransacoes);
             c.setId(id);
 
-            campus.add(c);
+            saldo.add(c);
             Log.i("TransacoesDAO", c.getNome());
         }
 
-        return campus;
+        return saldo;
     }
 }
