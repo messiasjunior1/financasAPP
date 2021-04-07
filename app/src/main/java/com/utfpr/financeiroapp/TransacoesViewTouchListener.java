@@ -1,4 +1,4 @@
-package com.utfpr.financeiroapp.listener.RecyclerView;
+package com.utfpr.financeiroapp;
 
 import android.content.Context;
 import android.view.GestureDetector;
@@ -7,12 +7,13 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecyclerViewTouchListener implements RecyclerView.OnItemTouchListener{
-
+public class TransacoesViewTouchListener implements RecyclerView.OnItemTouchListener
+{
     private GestureDetector gestureDetector;
-    private RecyclerViewClickListener clickListener;
+    private ITransacoesClickListener clickListener;
 
-    public RecyclerViewTouchListener(Context context, final RecyclerView recyclerView, final RecyclerViewClickListener clickListener) {
+    public TransacoesViewTouchListener(Context context, final RecyclerView recyclerView, final ITransacoesClickListener clickListener)
+    {
         this.clickListener = clickListener;
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
@@ -31,8 +32,8 @@ public class RecyclerViewTouchListener implements RecyclerView.OnItemTouchListen
     }
 
     @Override
-    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e)
+    {
         View child = rv.findChildViewUnder(e.getX(), e.getY());
         if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
             clickListener.onClick(child, rv.getChildPosition(child));
@@ -41,12 +42,8 @@ public class RecyclerViewTouchListener implements RecyclerView.OnItemTouchListen
     }
 
     @Override
-    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-    }
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) {}
 
     @Override
-    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-    }
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
 }
-

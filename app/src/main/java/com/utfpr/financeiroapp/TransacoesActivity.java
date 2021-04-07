@@ -1,44 +1,48 @@
 package com.utfpr.financeiroapp;
 
+
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.utfpr.financeiroapp.adapter.AdapterSaldo;
-import com.utfpr.financeiroapp.listener.RecyclerView.RecyclerViewClickListener;
-import com.utfpr.financeiroapp.listener.RecyclerView.RecyclerViewTouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-    public class Saldos extends AppCompatActivity {
-    private RecyclerView listSaldo;
+public class TransacoesActivity extends AppCompatActivity
+{
+    private RecyclerView listTransacoes;
     private List<TransacoesEntity> lista = new ArrayList<>();
+
+    TransacoesAdapter adapter;
+    AlertDialog alerta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listSaldo = findViewById(R.id.recyclerSaldo);
+        listTransacoes = findViewById(R.id.recyclerSaldo);
 
         geraLista();
         //Configuração do adapter
-        AdapterSaldo adapter = new AdapterSaldo(lista);
+        TransacoesAdapter adapter = new TransacoesAdapter(lista);
 
         //Configuração do recycler view
         //layout manager
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
-        listSaldo.setLayoutManager(manager);
+        listTransacoes.setLayoutManager(manager);
 
         //adapter
-        listSaldo.setAdapter(adapter);
+        listTransacoes.setAdapter(adapter);
 
         //adicionando listenes para on click
-        listSaldo.addOnItemTouchListener(new RecyclerViewTouchListener(
-                getApplicationContext(), listSaldo, new RecyclerViewClickListener() {
+        listTransacoes.addOnItemTouchListener(new TransacoesViewTouchListener(
+                getApplicationContext(), listTransacoes, new ITransacoesClickListener() {
 
             @Override
             public void onClick(View view, int position) {
@@ -58,5 +62,4 @@ import java.util.List;
         lista.add(new TransacoesEntity("ABC", "1656.22", "Hotel", "Curitiba", "14/12/1997", "1"));
 
     }
-}
 }

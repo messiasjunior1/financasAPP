@@ -1,4 +1,4 @@
-package com.utfpr.financeiroapp.adapter;
+package com.utfpr.financeiroapp;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +8,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.utfpr.financeiroapp.R;
-import com.utfpr.financeiroapp.TransacoesEntity;
-
 import java.util.List;
 
-
-
-public class AdapterSaldo extends RecyclerView.Adapter<AdapterSaldo.ViewHolder> {
+public class TransacoesAdapter extends RecyclerView.Adapter<TransacoesAdapter.ViewHolder>
+{
     private List<TransacoesEntity> lista;
 
-    public AdapterSaldo(List<TransacoesEntity> lista) {
+    public TransacoesAdapter(List<TransacoesEntity> lista) {
         this.lista = lista;
     }
 
@@ -30,12 +26,10 @@ public class AdapterSaldo extends RecyclerView.Adapter<AdapterSaldo.ViewHolder> 
         private TextView textData;
         private TextView textTipo;
 
-
-
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-            //textNome = view.findViewById(R.id.);
+            // textNome = view.findViewById(R.id.textViewNomeCampus);
 
         }
     }
