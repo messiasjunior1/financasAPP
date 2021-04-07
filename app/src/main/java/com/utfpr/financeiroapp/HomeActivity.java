@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         btnSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intToSaldo = new Intent(HomeActivity.this, Saldos.class);
+                Intent intToSaldo = new Intent(HomeActivity.this, TransacoesActivity.class);
                 startActivity(intToSaldo);
             }
         });
